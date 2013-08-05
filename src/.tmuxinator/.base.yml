@@ -1,0 +1,14 @@
+# ~/.tmuxinator/{project_name}.yml base tmux file
+# you can make as many tabs as you wish...
+
+project_name: {project_name}
+project_root: ~/src/{project_name}
+tabs:
+  - Main:
+      layout: b0f2,205x63,0,0[205x46,0,0{132x46,0,0,72x46,133,0},205x17,0,47]
+      panes:
+        - workon {project_name}; clear
+        - gitg --all; git branch; git status
+        - workon {project_name}; clear
+  - Webserver:
+  - Mysql: mysql

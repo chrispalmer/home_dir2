@@ -1,0 +1,36 @@
+[branch]
+	autosetuprebase = always
+	autosetupmerge = true
+[branch "master"]
+	rebase = true
+[color]
+	grep = auto
+	diff = auto
+	status = auto
+	ui = auto
+	branch = auto
+[color "grep"]
+	filename = magenta
+	linenumber = green
+[color "diff"]
+	func = blue
+[color "status"]
+	untracked = yellow
+	branch = green
+[core]
+	whitespace = trailing-space,space-before-tab
+	excludesfile = /home/chris.palmer/.gitignore
+	editor = sublime -n -w
+[grep]
+	lineNumber = true
+[push]
+	default = tracking
+[rebase]
+	autosquash = true
+[rerere]
+	enabled = true
+[pager]
+	log = less -E
+[user]
+	name = chris.palmer
+	email = chris.palmer@leadkarma.com

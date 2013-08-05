@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# store the base-directory
+base_dir=src
+
+# find files, directories and symbolic-links
+for x in $(find $base_dir -type d -o -type f -o -type l | egrep "^$base_dir/(.+)" | sed "s/$base_dir\///g");
+do
+	# calculate the source/destination values
+	source_=$base_dir/$x;
+	destination=~/$x;
+	# if it's a directory and it does not exist
+	if [ -d $source_ ] && [ ! -d $destination ];
+	then
+		mkdir -p $destination;
+	# if it's a file and it does not exist or it is different
+	elif [ -f $source_ ] && ([ ! -f $destination ] || ! cmp $source_ $destination > /dev/null 2>&1);
+	then
+		if [ $1 == 'diff' ]
+		then
+			diff $source_ $destination
+		fi
+		cp -ai $source_ $destination;
+	fi
+done
