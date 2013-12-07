@@ -19,6 +19,7 @@ alias workon='source ~/bin/workon.sh'
 alias tmux='~/bin/tmux.sh'
 
 # Git aliases
+alias g='git'
 alias gg='git grep'
 alias gd='git diff'
 alias gdc='git diff --cached'

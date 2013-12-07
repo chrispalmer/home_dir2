@@ -11,43 +11,43 @@ export HISTFILESIZE=100000
 
 shopt -s checkwinsize
 
+#export RUBY_GC_MALLOC_LIMIT=90000000
+#export RUBY_FREE_MIN=200000
 
-
-export EDITOR='sublime'
+export EDITOR=/usr/bin/sublime
 
 PATH=$PATH:$HOME/bin
 
+export PERL5LIB=/usr/local/lib/perl5:/usr/local/lib/perl5/site_perl:~/src/id/cgi-bin:~/src/id/local/lib/perl5
 
 if [ -f $HOME/.bash_aliases ]; then
-    . $HOME/.bash_aliases
+	. $HOME/.bash_aliases
 fi
 
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+	. /etc/bash_completion
 fi
 
 
 # Setup Tmuxinator if it exists
 if [ -s $HOME/.tmuxinator/scripts/tmuxinator ];
 then
-    . $HOME/.tmuxinator/scripts/tmuxinator
+	. $HOME/.tmuxinator/scripts/tmuxinator
 fi
 if [ -s $HOME/.tmuxinator/scripts/tmuxinator_completion ];
 then
-    . $HOME/.tmuxinator/scripts/tmuxinator_completion
+	. $HOME/.tmuxinator/scripts/tmuxinator_completion
 fi
 
 # Load RVM if it exists
 if [ -s $HOME/.rvm/scripts/rvm ];
 then
-    PATH=$PATH:$HOME/.rvm/bin
-    . $HOME/.rvm/scripts/rvm
+	PATH=$PATH:$HOME/.rvm/bin
+	. $HOME/.rvm/scripts/rvm
 fi
 
 alias aliases='source $HOME/.bash_aliases'
-
-#PS1='[\u@\h \e[01;34m\w\e[00m]\n \e[01;31m\$\e[00m '
 
 
 # Configure Colors:
@@ -71,36 +71,43 @@ COLOR_DEFAULT='\033[0m'
 
 # Function to set prompt_command to.
 function promptcmd () {
-    history -a
+	history -a
 
-    PS1="[\u@"
+	PS1="[ \u@"
 
-    # Host
-    if [[ ${SSH_CLIENT} ]] || [[ ${SSH2_CLIENT} ]]; then
-        PS1="${PS1}\[${COLOR_PURPLE}\]\h "
-    else
-        PS1="${PS1}\[${COLOR_GREEN}\]\h "
-    fi
+	# Host
+	if [[ ${SSH_CLIENT} ]] || [[ ${SSH2_CLIENT} ]]; then
+		PS1="${PS1}\[${COLOR_PURPLE}\]\h "
+	else
+		PS1="${PS1}\[${COLOR_GREEN}\]\h "
+	fi
 
-    # Backgrounded running jobs
-    # local BKGJBS=$(jobs -r | wc -l )
-    # if [ ${BKGJBS} -gt 2 ]; then
-    #     PS1="${PS1}\[${COLOR_RED}\][bg:${BKGJBS}] "
-    # elif [ ${BKGJBS} -gt 0 ]; then
-    #     PS1="${PS1}\[${COLOR_YELLOW}\][bg:${BKGJBS}] "
-    # fi
+	# Backgrounded running jobs
+	# local BKGJBS=$(jobs -r | wc -l )
+	# if [ ${BKGJBS} -gt 2 ]; then
+	#     PS1="${PS1}\[${COLOR_RED}\][bg:${BKGJBS}] "
+	# elif [ ${BKGJBS} -gt 0 ]; then
+	#     PS1="${PS1}\[${COLOR_YELLOW}\][bg:${BKGJBS}] "
+	# fi
 
-    # Stopped Jobs
-    local STPJBS=$(jobs -s | wc -l )
-    if [ ${STPJBS} -gt 2 ]; then
-        PS1="${PS1}\[${COLOR_RED}\][stp:${STPJBS}] "
-    elif [ ${STPJBS} -gt 0 ]; then
-        PS1="${PS1}\[${COLOR_YELLOW}\][stp:${STPJBS}] "
-    fi
+	# Stopped Jobs
+	local STPJBS=$(jobs -s | wc -l )
+	if [ ${STPJBS} -gt 2 ]; then
+		PS1="${PS1}\[${COLOR_RED}\][stp:${STPJBS}] "
+	elif [ ${STPJBS} -gt 0 ]; then
+		PS1="${PS1}\[${COLOR_YELLOW}\][stp:${STPJBS}] "
+	fi
 
-    PS1="${PS1}\[${COLOR_BLUE}\]\w\[${COLOR_CYAN}\]\$(__git_ps1)\[${COLOR_DEFAULT}\]]\n"
+	# git branch
+	PS1="${PS1}\[${COLOR_BLUE}\]\w\[${COLOR_CYAN}\]\$(__git_ps1) "
 
-    PS1="${PS1}\[${COLOR_RED}\]\$\[${COLOR_DEFAULT}\] "
+	# virtualenv
+	if [[ $VIRTUAL_ENV ]]; then
+		virtualenv=`basename "$VIRTUAL_ENV"`
+		PS1="${PS1}\[${COLOR_PINK}\](${virtualenv}) "
+	fi
+
+	PS1="${PS1}\[${COLOR_DEFAULT}\]]\n\[${COLOR_RED}\]\$\[${COLOR_DEFAULT}\] "
 }
 
 
