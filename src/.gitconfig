@@ -1,8 +1,3 @@
-[branch]
-	autosetuprebase = always
-	autosetupmerge = true
-[branch "master"]
-	rebase = true
 [color]
 	grep = auto
 	diff = auto
@@ -19,12 +14,12 @@
 	branch = green
 [core]
 	whitespace = trailing-space,space-before-tab
-	excludesfile = /home/chris.palmer/.gitignore
+	excludesfile = /home/<set_me}>/.gitignore
 	editor = sublime -n -w
 [grep]
 	lineNumber = true
 [push]
-	default = tracking
+	default = simple
 [rebase]
 	autosquash = true
 [rerere]
@@ -32,5 +27,5 @@
 [pager]
 	log = less -E
 [user]
-	name = chris.palmer
-	email = chris.palmer@leadkarma.com
+	name = <set_me>
+	email = <set_me>

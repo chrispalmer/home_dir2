@@ -2,8 +2,8 @@
 # you can make as many tabs as you wish...
 
 project_name: {project_name}
-project_root: ~/src/{project_name}
-tabs:
+project_root: ~/{code_dir}/{project_name}
+windows:
   - Main:
       layout: b0f2,205x63,0,0[205x46,0,0{132x46,0,0,72x46,133,0},205x17,0,47]
       panes:

@@ -15,7 +15,7 @@ then
 		source $activate_script;
 	fi
 
-	source_directory=$HOME/src/$1;
+	source_directory=$HOME/$CODE_DIR/$1;
 	if [ -d $source_directory ];
 	then
 		cd $source_directory;

@@ -4,7 +4,7 @@ if [ $# -gt 1 ] && [ $1 == 'generate' ];
 then
 	# create tmuxinator file
 	tmux_file=$HOME/.tmuxinator/$2.yml;
-	sed s/{project_name}/$2/ < $HOME/.tmuxinator/.base.yml > $tmux_file;
+	cat $HOME/.tmuxinator/.base.yml | sed s/{project_name}/$2/ | sed s^{code_dir}^$CODE_DIR^ > $tmux_file;
 
 	#create alias to start tmuxinator project
 	echo -e "alias $2='tmux $2'" >> $HOME/.bash_aliases.local
