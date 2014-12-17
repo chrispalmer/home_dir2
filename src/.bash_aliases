@@ -25,6 +25,7 @@ alias gd='git diff'
 alias gdc='git diff --cached'
 alias gspp='git stash && git pull && git stash pop'
 alias gs='git status'
+alias gco='git checkout'
 
 if [ -f $HOME/.bash_aliases.local ];
 then

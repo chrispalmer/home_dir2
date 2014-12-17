@@ -15,11 +15,11 @@
 [core]
 	whitespace = trailing-space,space-before-tab
 	excludesfile = /home/<set_me}>/.gitignore
-	editor = sublime -n -w
+	editor = sublime -w
 [grep]
 	lineNumber = true
 [push]
-	default = simple
+	default = tracking
 [rebase]
 	autosquash = true
 [rerere]
