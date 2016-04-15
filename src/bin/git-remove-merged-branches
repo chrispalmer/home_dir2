@@ -1,0 +1,3 @@
+git branch --merged | grep -v "\*" | grep -v "master|stable" | xargs -n 1 git branch -d
+git remote prune origin
+

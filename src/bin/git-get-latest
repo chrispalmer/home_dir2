@@ -1,0 +1,16 @@
+stash_ref=$( git stash create )
+
+if [ ! -z "$stash_ref" ]
+  then
+    git stash store $stash_ref
+fi
+
+git reset HEAD --hard
+git pull
+
+git remove-merged-branches
+
+if [ ! -z "$stash_ref" ]
+  then
+    git stash pop --index
+fi

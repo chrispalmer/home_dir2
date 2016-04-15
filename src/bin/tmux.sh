@@ -36,4 +36,4 @@ then
 	fi
 fi
 
-/usr/bin/tmux
+/usr/local/bin/tmux

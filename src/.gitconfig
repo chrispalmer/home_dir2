@@ -14,8 +14,8 @@
 	branch = green
 [core]
 	whitespace = trailing-space,space-before-tab
-	excludesfile = /home/<set_me}>/.gitignore
-	editor = sublime -w
+	excludesfile = /Users/cpalmer/.gitignore_global
+	editor = nano
 [grep]
 	lineNumber = true
 [push]
@@ -27,5 +27,7 @@
 [pager]
 	log = less -E
 [user]
-	name = <set_me>
-	email = <set_me>
+	name = "Chris Palmer"
+	email = chris@crpalmer.com
+[init]
+	templatedir = ~/git/templates

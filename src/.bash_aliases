@@ -1,10 +1,9 @@
 alias edit='sublime'
 
-function sublime() { command sublime "$@" &>/dev/null &}
 function gitg() { command gitg --all "$@" &>/dev/null & }
 
-alias ls='ls --color=auto'
-alias grep='egrep -n --color=auto'
+alias ls='gls --color=auto'
+alias egrep='egrep -n --color=auto'
 alias less='less -R'
 
 alias rd='rm -r'
@@ -24,6 +23,7 @@ alias gg='git grep'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gspp='git stash && git pull && git stash pop'
+#alias gspp='git stash && git pull && git remove-merged-branches && git stash pop'
 alias gs='git status'
 alias gco='git checkout'
 

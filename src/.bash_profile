@@ -29,6 +29,13 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 	. /etc/bash_completion
 fi
 
+if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+        . /usr/local/etc/bash_completion.d/git-completion.bash
+fi
+
+if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
+        . /usr/local/etc/bash_completion.d/git-prompt.sh
+fi
 
 # Setup Tmuxinator if it exists
 if [ -s $HOME/.tmuxinator/scripts/tmuxinator ];
@@ -38,13 +45,6 @@ fi
 if [ -s $HOME/.tmuxinator/scripts/tmuxinator_completion ];
 then
 	. $HOME/.tmuxinator/scripts/tmuxinator_completion
-fi
-
-# Load RVM if it exists
-if [ -s $HOME/.rvm/scripts/rvm ];
-then
-	PATH=$PATH:$HOME/.rvm/bin
-	. $HOME/.rvm/scripts/rvm
 fi
 
 alias aliases='source $HOME/.bash_aliases'
